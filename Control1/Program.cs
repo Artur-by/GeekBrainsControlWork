@@ -18,6 +18,16 @@ void PrintArray(string[] array)
         Console.Write($" {array[i]} ");
 }
 
+
+// метод определения длины элемента
+
+int LenElement(string el)
+{
+    int lenEl = el.Length;
+    return lenEl;
+}
+
+
 Console.Write("Введите длину массива: ");
 int N = Convert.ToInt32(Console.ReadLine());
 
