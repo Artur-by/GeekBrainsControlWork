@@ -2,7 +2,6 @@
 // элементы которого меньше либо равны 3 символам
 
 
-
 // метод создания массива
 string[] CreateArray(int N)
 {
@@ -19,14 +18,6 @@ void PrintArray(string[] array)
 }
 
 
-// метод определения длины элемента
-
-int LenElement(string el)
-{
-    int lenEl = el.Length;
-    return lenEl;
-}
-
 
 Console.Write("Введите длину массива: ");
 int N = Convert.ToInt32(Console.ReadLine());
@@ -38,4 +29,23 @@ for (int i = 0; i < N; i++)
     array[i] = Convert.ToString(Console.ReadLine());
 }
 
+int countNewEl = 0;
+for (int i = 0; i < array.Length; i++)
+{
+    if (array[i].Length <= 3) countNewEl++;
+}
+
+string[] newArray = CreateArray(countNewEl);
+int j = 0;
+for (int i = 0; i < array.Length; i++)
+{
+    if (array[i].Length <= 3)
+    {
+        newArray[j] = array[i];
+        j++;
+    }
+}
+
 PrintArray(array);
+System.Console.WriteLine();
+PrintArray(newArray);
