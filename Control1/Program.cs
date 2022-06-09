@@ -6,7 +6,6 @@
 string[] CreateArray(int N)
 {
     string[] array = new string[N];
-
     return array;
 }
 
@@ -17,24 +16,39 @@ void PrintArray(string[] array)
         Console.Write($" {array[i]} ");
 }
 
-
+// Вводим количество элементов первоначального массива N
 
 Console.Write("Введите длину массива: ");
-int N = Convert.ToInt32(Console.ReadLine());
+string N = Console.ReadLine();
 
-string[] array = CreateArray(N);
-for (int i = 0; i < N; i++)
+int number;
+while (true)
 {
-    Console.Write($"Введите {i + 1}-й элемент массива: ");
-    array[i] = Convert.ToString(Console.ReadLine());
+    if (int.TryParse(N, out number) == false)
+    {
+        Console.WriteLine("Вы ввели не числовое значение, попробуйте еще раз!");
+        Console.Write("Введите длину массива: ");
+        N = Console.ReadLine();
+    }
+    else break;
 }
 
+// Формируем пустой массив с количеством N символов и вводим данные
+string[] array = CreateArray(number);
+for (int i = 0; i < number; i++)
+{
+    Console.Write($"Введите {i + 1}-й элемент массива: ");
+    array[i] = Console.ReadLine();
+}
+
+// считаем количество элементов с числом символов <= 3
 int countNewEl = 0;
 for (int i = 0; i < array.Length; i++)
 {
     if (array[i].Length <= 3) countNewEl++;
 }
 
+//Формируем новый итоговый массив 
 string[] newArray = CreateArray(countNewEl);
 int j = 0;
 for (int i = 0; i < array.Length; i++)
@@ -46,6 +60,9 @@ for (int i = 0; i < array.Length; i++)
     }
 }
 
+// Выводим результат в консоль
+Console.WriteLine("Исходный массив:");
 PrintArray(array);
-System.Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine("Итоговый массив:");
 PrintArray(newArray);
