@@ -12,8 +12,11 @@ string[] CreateArray(int N)
 //метод вывода элементов массива в консоль
 void PrintArray(string[] array)
 {
-    for (int i = 0; i < array.Length; i++)
-        Console.Write($"[{array[i]}] ");
+    Console.Write("[");
+    for (int i = 0; i < array.Length - 1; i++)
+        Console.Write($"'{array[i]}', ");
+    Console.Write($"'{array[array.Length - 1]}'");
+    Console.WriteLine("]");
 }
 
 // Вводим количество элементов первоначального массива N
@@ -59,8 +62,8 @@ if (countNewEl == 0)
 {
     Console.WriteLine("В заданном массиве:");
     PrintArray(array);
-    Console.WriteLine();
-    Console.Write(" нет элементов, удовлетворяющих условию!");
+    Console.WriteLine("нет элементов, удовлетворяющих условию!");
+    Console.WriteLine("Итоговоый массив:  []");
 }
 else
 {
